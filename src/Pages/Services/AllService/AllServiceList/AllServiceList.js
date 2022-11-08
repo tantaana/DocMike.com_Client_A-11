@@ -1,14 +1,15 @@
 import React from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import { Link } from 'react-router-dom';
 
 const AllServiceList = ({ service }) => {
-    const { title, img, description, rating, price } = service;
+    const { _id, title, img, description, rating, price } = service;
     const shortDes = description.slice(0, 150);
     return (
         <div className='flex justify-center'>
             <PhotoProvider>
-                <div className="card lg:card-side lg:w-3/4 bg-base-100 shadow-xl">
+                <div className="card lg:card-side lg:w-3/4 bg-blue-600 shadow-xl">
                     <figure><PhotoView src={img}>
                         <img src={img} className="w-96" alt="" />
                     </PhotoView></figure>
@@ -21,7 +22,7 @@ const AllServiceList = ({ service }) => {
                         </div>
 
                         <div className="card-actions justify-end">
-                            <button className="btn btn-primary">View Details</button>
+                            <Link to={`/services/${_id}`}><button className="btn btn-primary">View Details</button></Link>
                         </div>
                     </div>
                 </div>

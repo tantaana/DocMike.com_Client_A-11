@@ -1,9 +1,10 @@
 import React from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import { Link } from 'react-router-dom';
 
 const ServiceList = ({ service }) => {
-    const { title, img, description, rating, price } = service;
+    const { _id, title, img, description, rating, price } = service;
     const sliced = description.slice(0, 100)
     return (
         <div>
@@ -18,7 +19,7 @@ const ServiceList = ({ service }) => {
                         <h3 className='text-xl font-bold mb-6'>Rating: {rating}⭐⭐⭐</h3>
                         <div className="card-actions flex justify-between items-center">
                             <h2 className='text-xl font-bold'><span className='text-black'>Price:</span> ${price}</h2>
-                            <button className="btn btn-accent">View Details</button>
+                            <Link to={`/services/${_id}`}><button className="btn btn-accent">View Details</button></Link>
                         </div>
                     </div>
                 </div>
