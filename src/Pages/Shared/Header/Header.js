@@ -16,11 +16,11 @@ const Header = () => {
 
                         </ul>
                     </div>
-                    <Link to='/' className="btn btn-ghost normal-case text-3xl font-bold"><span className='text-white'>⛑️Doc</span><span className='text-red-500 text-4xl'>Mike</span></Link>
+                    <Link to='/' className="btn btn-ghost normal-case text-3xl font-bold"><span className='text-white'>⛑️Doc</span><span className='text-red-500 text-4xl'>Mike</span><span>.com</span></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
-                        <li><Link>Home</Link></li>
+                        <li><Link to='/'>Home</Link></li>
                         <li><Link to='/blogs'>Blogs</Link></li>
                     </ul>
                 </div>

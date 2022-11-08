@@ -14,7 +14,7 @@ const AllService = () => {
 
     return (
         <div>
-            <h1 className='text-4xl text-center'>Provided Services</h1>
+            <h1 className='text-4xl text-center text-red-400 font-bold my-20'>All Services</h1>
 
             <div className='flex flex-col gap-4 mx-6 my-4'>
                 {

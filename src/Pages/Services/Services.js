@@ -12,8 +12,8 @@ const Services = () => {
     }, [])
 
     return (
-        <div>
-            <h1 className='text-4xl text-center'>Provided Services</h1>
+        <div className='mb-20'>
+            <h1 className='text-3xl md:text-4xl text-center font-bold text-red-400'>Services For You Today !</h1>
 
             <div className='flex flex-col lg:flex-row gap-4 mx-6 my-4'>
                 {
