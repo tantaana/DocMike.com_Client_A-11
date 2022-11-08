@@ -12,22 +12,22 @@ const Login = () => {
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <div className="card-body">
-                            <h1 className="text-5xl font-bold text-center mb-10"><span className='text-red-500'>Login</span></h1>
+                            <h1 className="text-5xl font-bold text-center mb-10"><span className='text-yellow-500'>Login</span></h1>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-xl">Your Email 📧</span>
                                 </label>
-                                <input type="text" name="email" placeholder="Type your email" className="input input-bordered" />
+                                <input type="email" name="email" placeholder="Type your email" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-xl">Your Password 🔐</span>
                                 </label>
-                                <input type="text" name="password" placeholder="Type your password" className="input input-bordered" />
+                                <input type="password" name="password" placeholder="Type your password" className="input input-bordered" required />
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover text-lg">Forgot password?</a>
                                 </label>
-                                <h3 className='text-lg font-bold mt-10'>Don't have an account? <Link className='text-yellow-500 font-bold' to='/register'>Register</Link> here</h3>
+                                <h3 className='text-lg font-bold mt-10 text-center'>Don't have an account? <Link className='text-red-400 font-bold' to='/signup'>Sign Up</Link> here</h3>
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-accent">Login</button>
