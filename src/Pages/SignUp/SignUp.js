@@ -1,11 +1,30 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import signUpImg from '../../assets/signup.png'
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import { FaGoogle } from 'react-icons/fa'
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const SignUp = () => {
 
-    const { createUser } = useContext(AuthContext);
+    const [error, setError] = useState(null)
+
+    const { user, createUser, providerLogin } = useContext(AuthContext);
+
+    const googleLogIn = new GoogleAuthProvider();
+
+    const handleGoogle = () => {
+        providerLogin(googleLogIn)
+            .then(result => {
+                const users = result.user;
+                console.log(users)
+                console.log(user.uid)
+            })
+            .catch(err => {
+                console.error(err);
+                setError("User could not sign in. Please try again.");
+            })
+    }
 
     const handleSignUp = event => {
         event.preventDefault();
@@ -19,7 +38,10 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user)
             })
-            .catch(err => console.error(err))
+            .catch(err => {
+                console.error(err);
+                setError("User Already Exist")
+            })
     }
 
     return (
@@ -30,31 +52,39 @@ const SignUp = () => {
                         <img src={signUpImg} alt="" />
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+
                         <form onSubmit={handleSignUp} className="card-body">
                             <h1 className="text-5xl font-bold text-center mb-10"><span className='text-yellow-500'>Sign Up</span></h1>
+
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-xl">Your Full Name 🖋️</span>
                                 </label>
                                 <input type="text" name="name" placeholder="Type your name" className="input input-bordered" required />
                             </div>
+
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-xl">Your Email 📧</span>
                                 </label>
                                 <input type="email" name="email" placeholder="Type your email" className="input input-bordered" required />
                             </div>
+
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-xl">Your Password 🔐</span>
                                 </label>
                                 <input type="password" name="password" placeholder="Type your password" className="input input-bordered" required />
-                                <h3 className='text-lg font-bold mt-10 text-center'>Already have an account? <Link className='text-red-400 font-bold' to='/login'>Login</Link> here</h3>
+                                <div className="form-control mt-6">
+                                    <button className='btn btn-secondary' type="submit">Sign Up</button>
+                                </div>
                             </div>
-                            <div className="form-control mt-6">
-                                <button className='btn btn-secondary' type="submit">Sign Up</button>
-                            </div>
+                            <h3 className='text-2xl text-center font-bold text-red-400 mt-4'>{error}</h3>
                         </form>
+
+                        <h3 className='text-center text-2xl font-bold mb-6'>OR</h3>
+                        <button onClick={handleGoogle} className='btn btn-primary mb-6 mx-8 flex justify-evenly'><span className='text-2xl'><FaGoogle /></span><span>SignUp with Google</span></button>
+                        <h3 className='text-lg font-bold  mb-10 text-center'>Already have an account? <Link className='text-red-400 font-bold' to='/login'>Login</Link> here</h3>
                     </div>
                 </div>
             </div>
