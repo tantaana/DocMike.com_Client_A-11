@@ -9,9 +9,9 @@ const ServiceList = ({ service }) => {
     return (
         <div>
             <PhotoProvider>
-                <div className="card lg:card-side bg-blue-600 shadow-xl">
+                <div className="card xl:card-side bg-blue-600 shadow-xl">
                     <figure><PhotoView src={img}>
-                        <img src={img} alt="" />
+                        <img src={img} className="rounded" alt="" />
                     </PhotoView></figure>
                     <div className="card-body">
                         <h2 className="card-title text-3xl font-bold text-yellow-500">{title}</h2>

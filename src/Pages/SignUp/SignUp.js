@@ -40,7 +40,7 @@ const SignUp = () => {
             })
             .catch(err => {
                 console.error(err);
-                setError("User Already Exist")
+                setError("User Already Exist !")
             })
     }
 

@@ -21,7 +21,7 @@ const AllServiceList = ({ service }) => {
                             <h3 className='text-white font-bold text-2xl'><span className='text-black'>Price:</span> ${price}</h3>
                         </div>
 
-                        <div className="card-actions justify-end">
+                        <div className="card-actions flex justify-center md:justify-end">
                             <Link to={`/services/${_id}`}><button className="btn btn-accent">View Details</button></Link>
                         </div>
                     </div>
