@@ -45,24 +45,26 @@ const UserReview = ({ details }) => {
 
 
     return (
-        <div className="hero bg-base-300 mt-20">
+        <div>
             <div><Toaster /></div>
-            <div className="hero-content flex-col lg:flex-row lg:justify-between lg:gap-48">
+            <div className="hero bg-base-300 mt-20">
+                <div className="hero-content flex-col lg:flex-row lg:justify-between lg:gap-48">
 
-                <UserReviewData _id={_id}></UserReviewData>
-                <form onSubmit={handleReviewAdd}>
-                    <h4 className='text-4xl mb-10 text-center'>Chosen Treatment : <span className='font-bold text-red-400'>{title}</span></h4>
-                    {user ? <><div className='flex flex-col'>
-                        <h3 className='text-md font-bold mb-10'>Please write your review below ✔️</h3>
-                        <input type="text" name="email" defaultValue={user?.email} placeholder="" className="input input-bordered w-full max-w-xs mb-6" disabled />
-                        <input type="text" name="name" placeholder="Your Name" className="input input-bordered w-full max-w-xs mb-6" required />
-                        <textarea name="message" className="textarea textarea-info mb-6" placeholder="Please write your message here" required></textarea>
-                    </div>
+                    <UserReviewData _id={_id}></UserReviewData>
+                    <form onSubmit={handleReviewAdd}>
+                        <h4 className='text-4xl mb-10 text-center'>Chosen Treatment : <span className='font-bold text-red-400'>{title}</span></h4>
+                        {user ? <><div className='flex flex-col'>
+                            <h3 className='text-md font-bold mb-10'>Please write your review below ✔️</h3>
+                            <input type="text" name="email" defaultValue={user?.email} placeholder="" className="input input-bordered w-full max-w-xs mb-6" disabled />
+                            <input type="text" name="name" placeholder="Your Name" className="input input-bordered w-full max-w-xs mb-6" required />
+                            <textarea name="message" className="textarea textarea-info mb-6" placeholder="Please write your message here" required></textarea>
+                        </div>
 
-                        <input className='btn btn-accent' type="submit" value="Add Review" /></> :
-                        <h3 className='text-center text-xl text-red-500 font-bold'>Please <Link className='text-white' to='/login'>Login</Link> first to add your review</h3>}
-                </form>
+                            <input className='btn btn-accent' type="submit" value="Add Review" /></> :
+                            <h3 className='text-center text-xl text-red-500 font-bold'>Please <Link className='text-white' to='/login'>Login</Link> first to add your review</h3>}
+                    </form>
 
+                </div>
             </div>
         </div>
     );

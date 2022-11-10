@@ -14,7 +14,7 @@ const MyReviews = () => {
     }, [user.email])
 
     const handleDelete = id => {
-        const proceed = window.confirm('Delete korbi?');
+        const proceed = window.confirm('Are you sure you want to delete?');
         if (proceed) {
             fetch(`http://localhost:5000/reviewsUser/${id}`, {
                 method: 'DELETE'
@@ -23,7 +23,7 @@ const MyReviews = () => {
                 .then(data => {
                     console.log(data);
                     if (data.deletedCount > 0) {
-                        toast.success('deleted succesfully');
+                        toast.success('Deleted succesfully');
                         const remaining = reviews.filter(review => review._id !== id);
                         setReviews(remaining)
                     }
@@ -56,9 +56,6 @@ const MyReviews = () => {
 
                                             <tr>
                                                 <th>
-                                                    <label>
-                                                        <input type="checkbox" className="checkbox" />
-                                                    </label>
                                                 </th>
                                                 <td>
                                                     <div className="flex items-center space-x-3">
