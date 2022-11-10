@@ -10,6 +10,7 @@ const UserReviewData = ({ _id }) => {
     }, [])
     return (
         <div>
+            {reviews.length > 0 ? <h3 className='text-3xl font-bold mb-10'>User Review ⭐</h3> : ''}
             {reviews.length > 0 ?
                 <>{reviews.map(review =>
                     <div className='flex py-4 gap-6'>
