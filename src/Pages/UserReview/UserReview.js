@@ -17,6 +17,7 @@ const UserReview = ({ details }) => {
 
         const review = {
             service: details._id,
+            title: title,
             user_Name: name,
             Message: message,
             email: email
