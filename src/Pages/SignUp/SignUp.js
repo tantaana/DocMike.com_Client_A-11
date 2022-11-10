@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import signUpImg from '../../assets/signup.png'
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import { FaGoogle } from 'react-icons/fa'
@@ -9,6 +9,11 @@ import AllTitle from '../../Hooks/AllTitle';
 const SignUp = () => {
 
     const [error, setError] = useState(null)
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const { user, createUser, providerLogin } = useContext(AuthContext);
 
@@ -20,8 +25,7 @@ const SignUp = () => {
         providerLogin(googleLogIn)
             .then(result => {
                 const users = result.user;
-                console.log(users)
-                console.log(user.uid)
+                navigate(from, { replace: true })
             })
             .catch(err => {
                 console.error(err);
@@ -40,6 +44,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                navigate(from, { replace: true })
             })
             .catch(err => {
                 console.error(err);

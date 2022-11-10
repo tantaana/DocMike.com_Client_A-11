@@ -8,6 +8,7 @@ import ServiceDetails from '../../Pages/Services/ServiceDetails/ServiceDetails';
 import ServiceList from '../../Pages/Services/ServiceList/ServiceList';
 import SignUp from '../../Pages/SignUp/SignUp';
 import UserReview from '../../Pages/UserReview/UserReview';
+import UserReviewData from '../../Pages/UserReview/UserReviewData';
 import PrivateRoute from '../../PrivateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/services/:id',
-                element: <PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>,
+                element: <ServiceDetails></ServiceDetails>,
                 loader: ({ params }) => fetch(`http://localhost:5000/servicesAll/${params.id}`)
             },
             {
@@ -43,6 +44,11 @@ const router = createBrowserRouter([
             {
                 path: '/review',
                 element: <UserReview></UserReview>
+            },
+            {
+                path: '/userReview',
+                element: <UserReviewData></UserReviewData>,
+                loader: () => fetch('http://localhost:5000/reviews')
             }
         ]
     }
