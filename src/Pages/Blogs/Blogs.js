@@ -1,6 +1,8 @@
 import React from 'react';
+import AllTitle from '../../Hooks/AllTitle';
 
 const Blogs = () => {
+    AllTitle('Blogs')
     return (
         <div className='mt-20 mb-20 flex flex-col justify-center items-center'>
             <div className="card w-10/12 bg-blue-200 shadow-xl">

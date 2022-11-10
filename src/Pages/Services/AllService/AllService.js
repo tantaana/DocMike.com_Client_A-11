@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import AllTitle from '../../../Hooks/AllTitle';
 import ServiceList from '../ServiceList/ServiceList';
 import AllServiceList from './AllServiceList/AllServiceList';
 
 const AllService = () => {
     const [services, setServices] = useState([]);
 
+    AllTitle('Services')
+
     useEffect(() => {
         fetch(`http://localhost:5000/servicesAll`)
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
+
+
 
     return (
         <div>

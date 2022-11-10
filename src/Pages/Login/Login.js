@@ -1,14 +1,22 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginImg from '../../assets/login.png'
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import { FaGoogle } from 'react-icons/fa'
 import { GoogleAuthProvider } from 'firebase/auth';
+import AllTitle from '../../Hooks/AllTitle';
 
 const Login = () => {
     const { logIn, providerLogin } = useContext(AuthContext);
 
     const [error, setError] = useState(null);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
+
+    AllTitle('Login')
 
     const googleLogIn = new GoogleAuthProvider();
 
@@ -23,10 +31,12 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset()
+                navigate(from, { replace: true })
             })
             .catch(err => {
                 console.error(err);
                 setError('Wrong Password !');
+
             })
 
     }
@@ -36,10 +46,12 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                navigate('/')
             })
             .catch(err => {
                 console.error(err);
                 setError('Could not login. Try again')
+
             })
     }
     return (

@@ -4,12 +4,15 @@ import signUpImg from '../../assets/signup.png'
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import { FaGoogle } from 'react-icons/fa'
 import { GoogleAuthProvider } from 'firebase/auth';
+import AllTitle from '../../Hooks/AllTitle';
 
 const SignUp = () => {
 
     const [error, setError] = useState(null)
 
     const { user, createUser, providerLogin } = useContext(AuthContext);
+
+    AllTitle('SignUp')
 
     const googleLogIn = new GoogleAuthProvider();
 
