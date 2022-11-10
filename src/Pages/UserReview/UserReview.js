@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import UserReviewData from './UserReviewData';
+import toast, { Toaster } from 'react-hot-toast';
 
 const UserReview = ({ details }) => {
     const { user } = useContext(AuthContext);
@@ -34,7 +35,7 @@ const UserReview = ({ details }) => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-                    alert('Review Added Successfully');
+                    toast.success('Review Added Successfully');
                     form.reset()
 
                 }
@@ -45,6 +46,7 @@ const UserReview = ({ details }) => {
 
     return (
         <div className="hero bg-base-300 mt-20">
+            <div><Toaster /></div>
             <div className="hero-content flex-col lg:flex-row lg:justify-between lg:gap-48">
 
                 <UserReviewData _id={_id}></UserReviewData>

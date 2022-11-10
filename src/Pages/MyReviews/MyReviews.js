@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import toast, { Toaster } from 'react-hot-toast';
 
 const MyReviews = () => {
     const { user } = useContext(AuthContext);
@@ -11,8 +12,27 @@ const MyReviews = () => {
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [user.email])
+
+    const handleDelete = id => {
+        const proceed = window.confirm('Delete korbi?');
+        if (proceed) {
+            fetch(`http://localhost:5000/reviewsUser/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        toast.success('deleted succesfully');
+                        const remaining = reviews.filter(review => review._id !== id);
+                        setReviews(remaining)
+                    }
+                })
+        }
+    }
     return (
         <div>
+            <div><Toaster /></div>
             <div className='px-10'>
                 <h3 className='text-2xl font-bold my-10'>Logged In User: <span className='text-red-400'>{user.email}</span></h3>
                 {reviews.length > 0 ?
@@ -56,8 +76,9 @@ const MyReviews = () => {
                                                     {review.title}
                                                 </td>
                                                 <td className='text-xl'>❝ {review.Message} ❞</td>
-                                                <th>
-                                                    <button className="btn btn-ghost btn-xs">details</button>
+                                                <th className='flex gap-4'>
+                                                    <button className="btn btn-success btn-xs">Edit Review</button>
+                                                    <button onClick={() => handleDelete(review._id)} className="btn btn-error btn-xs">Delete Review</button>
                                                 </th>
                                             </tr>
 

@@ -10,6 +10,10 @@ const PrivateRoute = ({ children }) => {
         return <div className='flex justify-center mt-10'><h3>Loading...</h3></div>
     }
 
+    if (user) {
+        return children;
+    }
+
     if (!user) {
         return <Navigate to='/login' state={{ from: location }} replace></Navigate>
     }
