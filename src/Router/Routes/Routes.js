@@ -34,7 +34,7 @@ const router = createBrowserRouter([
             {
                 path: '/services/:id',
                 element: <ServiceDetails></ServiceDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/servicesAll/${params.id}`)
+                loader: ({ params }) => fetch(`https://docmike-server.vercel.app/servicesAll/${params.id}`)
             },
             {
                 path: '/login',
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
             {
                 path: '/userReview',
                 element: <UserReviewData></UserReviewData>,
-                loader: () => fetch('http://localhost:5000/reviews')
+                loader: () => fetch('https://docmike-server.vercel.app/reviews')
             },
             {
                 path: '/myreviews',
