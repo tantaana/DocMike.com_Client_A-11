@@ -8,9 +8,9 @@ import toast, { Toaster } from 'react-hot-toast';
 const UserReview = ({ details }) => {
     const { user } = useContext(AuthContext);
     const { _id, title } = details;
-    console.log(_id)
 
     const handleReviewAdd = event => {
+        event.preventDefault()
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
@@ -24,6 +24,8 @@ const UserReview = ({ details }) => {
             email: email
         }
 
+        console.log(review)
+
         fetch('https://docmike-server.vercel.app/reviews', {
             method: 'POST',
             headers: {
@@ -36,7 +38,8 @@ const UserReview = ({ details }) => {
                 console.log(data)
                 if (data.acknowledged) {
                     toast.success('Review Added Successfully');
-                    form.reset()
+                    form.reset();
+                    window.location.reload(false);
 
                 }
             })
